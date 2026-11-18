@@ -1,0 +1,129 @@
+body:not(.kb-unlocked) #app {
+  display: none;
+}
+
+.kb-lock {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #fbf9f5;
+}
+
+.kb-lock-card {
+  width: 100%;
+  max-width: 380px;
+  padding: 32px 28px 26px;
+  background: #fff;
+  border: 1px solid #e6dfd3;
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(60, 45, 30, 0.08);
+  text-align: center;
+}
+
+.kb-lock-card h1 {
+  margin: 0 0 10px;
+  color: #241f1a;
+  font-family: "Songti SC", "Noto Serif SC", Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.kb-lock-card > p {
+  margin: 0 0 20px;
+  color: #7a736a;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.kb-lock-card input[type="password"] {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #e6dfd3;
+  border-radius: 8px;
+  outline: none;
+  background: #fbf9f5;
+  color: #2c2823;
+  font-size: 15px;
+}
+
+.kb-lock-card input[type="password"]:focus {
+  border-color: #9a5b34;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(154, 91, 52, 0.12);
+}
+
+.kb-lock-card button[type="submit"] {
+  width: 100%;
+  margin-top: 12px;
+  padding: 11px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #9a5b34;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.kb-lock-card button[type="submit"]:hover {
+  background: #85502e;
+}
+
+.kb-lock-card button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.kb-remember {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 14px;
+  color: #7a736a;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.kb-error {
+  min-height: 18px;
+  margin: 10px 0 0 !important;
+  color: #b23b2e !important;
+  font-size: 13px !important;
+}
+
+.kb-lock-foot {
+  margin: 18px 0 0 !important;
+  color: #a89e90 !important;
+  font-size: 12px !important;
+}
+
+.kb-lock-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 900;
+  padding: 7px 14px;
+  border: 1px solid #e6dfd3;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  color: #7a736a;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.kb-lock-btn:hover {
+  border-color: #d8c8b8;
+  color: #9a5b34;
+}
+
+@media screen and (max-width: 768px) {
+  .kb-lock-card {
+    padding: 26px 20px 22px;
+  }
+}
