@@ -2,6 +2,12 @@
   'use strict';
 
   var MANIFEST_URL = '_enc/manifest.json';
+  var BUILD_TAG = '';
+
+  function isGatedUrl(target) {
+    var clean = String(target).split('#')[0].split('?')[0];
+    return /\.(md|json)$/i.test(clean) && clean.indexOf('_enc/') === -1;
+  }
   var CHECK_TEXT = 'aloo-townlet-kb';
   var SESSION_KEY = 'kb-key';
   var REMEMBER_KEY = 'kb-remember';
@@ -177,7 +183,11 @@
 
       this.open = function (method, target) {
         url = String(target);
-        native.open(method, target);
+        var finalTarget = target;
+        if (BUILD_TAG && isGatedUrl(url)) {
+          finalTarget = url + (url.indexOf('?') === -1 ? '?' : '&') + '_kb=' + encodeURIComponent(BUILD_TAG);
+        }
+        native.open(method, finalTarget);
       };
       this.send = function (body) {
         native.send(body);
@@ -398,6 +408,7 @@
       })
       .then(function (data) {
         manifest = data;
+        BUILD_TAG = String(data.salt || '').replace(/[^A-Za-z0-9]/g, '').slice(0, 16);
         return restore().then(unlock, function () {
           /* 无可用密钥，等待输入 */
         });
